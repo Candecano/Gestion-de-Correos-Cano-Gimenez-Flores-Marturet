@@ -6,8 +6,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ContactoTest {
     @Test
-    void testCrearContacto() {
-    
+    void crear_contacto_test() {
+        Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com"); 
+
+        assert(persona1 != null);
+        
     }
 
 }

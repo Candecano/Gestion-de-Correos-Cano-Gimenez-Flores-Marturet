@@ -1,28 +1,28 @@
 package com.example.gestordecorreo;
 
 public class Contacto {
-    private String nombre;
-    private String apellido;
+    private String nombreCompleto;
+    private String email;
 
-    public Contacto(String nombre, String apellido) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Contacto(String nombreCompleto, String email) {
+        this.nombreCompleto = nombreCompleto;
+        this.email = email;
     }
 
     public String getNombre() {
-        return nombre;
+        return nombreCompleto;
     }
 
     public void setNombre(String valor) {
-        nombre = valor;
+        nombreCompleto = valor;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getEmail(){
+        return email;
     }
 
-    public void setApellido(String valor) {
-        apellido = valor;
+    public void setEmail(String valor){
+        email = valor;
     }
  
 }
