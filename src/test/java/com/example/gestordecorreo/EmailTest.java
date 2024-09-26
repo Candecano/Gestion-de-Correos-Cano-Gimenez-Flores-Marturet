@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class EmailTest {
+
     @Test
     void crear_email_test(){
         Email e1 = new Email();
@@ -33,6 +34,21 @@ public class EmailTest {
         assertTrue(e1.getDestinatarios().size() == 1);
         
         
+    }
+
+    @Test
+    void enviar_email_test(){
+        Email e1 = new Email();
+        Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
+        Usuario usuario1 = new Usuario();
+        
+        e1.setAsunto("Universidad");
+        e1.setContenido("holaaa");
+        e1.setRemitente(persona1);
+
+        usuario1.enviarEmail(e1);
+        assertTrue(usuario1.getBandejaEnviados().size() == 1);
+
     }
     
 }

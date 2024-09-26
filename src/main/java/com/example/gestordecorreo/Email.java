@@ -1,7 +1,7 @@
 package com.example.gestordecorreo;
 import java.util.*;
 
-public class Email {
+public class Email  {
     private String asunto;
     private String contenido;
     private Contacto remitente;
@@ -10,7 +10,6 @@ public class Email {
     public Email(){
         destinatarios = new ArrayList<Contacto>();
     }
-
 
     public String getAsunto(){
         return asunto;
@@ -34,16 +33,19 @@ public class Email {
 
     public void setContenido(String valor){
         contenido = valor;
-
     }
 
     public void setRemitente(Contacto valor){
         remitente = valor;
     }
-
+    //es el para
     public void agregarDestinatario(Contacto valor){
         destinatarios.add(valor);
     }
 
+     
 
+
+
+    
 }
