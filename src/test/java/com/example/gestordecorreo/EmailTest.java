@@ -51,4 +51,26 @@ public class EmailTest {
 
     }
     
+    
+
+    @Test
+    void usuario1_manda_mail_y_usuario2_recibe(){
+        Email e1 = new Email();
+        Usuario usuario2 = new Usuario();
+        Usuario usuario1 = new Usuario();
+
+        e1.setAsunto("Universidad");
+        e1.setContenido("holaaa");
+        
+        usuario1.enviarEmail(e1);
+        assertTrue(usuario1.getBandejaEnviados().size() == 1);
+
+        usuario2.recibirEmail(e1);
+        assertTrue(usuario2.getBandejaEntrada().size() == 1);
+    }
+
+    
+    
+
+    
 }

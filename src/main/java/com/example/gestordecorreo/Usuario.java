@@ -15,4 +15,11 @@ public class Usuario {
         return bandejaEnviados;
     }
 
+    public void recibirEmail(Email email){
+        bandejaEntrada.add(email);
+    }
+
+    public ArrayList<Email> getBandejaEntrada(){
+        return bandejaEntrada;
+    }
 }
