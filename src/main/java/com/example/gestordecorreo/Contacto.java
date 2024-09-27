@@ -1,6 +1,6 @@
 package com.example.gestordecorreo;
 
-public class Contacto {
+public class Contacto extends EmailManager {
     private String nombreCompleto;
     private String email;
 
