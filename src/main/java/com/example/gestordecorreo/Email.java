@@ -6,7 +6,8 @@ public class Email  {
     private String contenido;
     private Contacto remitente;
     private ArrayList<Contacto> destinatarios;
-
+    
+    
     public Email(){
         destinatarios = new ArrayList<Contacto>();
     }
@@ -42,10 +43,6 @@ public class Email  {
     public void agregarDestinatario(Contacto valor){
         destinatarios.add(valor);
     }
-
-     
-
-
 
     
 }
