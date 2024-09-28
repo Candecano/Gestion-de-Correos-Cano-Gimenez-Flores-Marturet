@@ -1,20 +1,15 @@
 package com.example.gestordecorreo;
-import java.util.ArrayList;
 
-public class EmailManager {
+import java.util.ArrayList;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+public class Bandeja  {
     private ArrayList<Email> bandejaEntrada = new ArrayList<>();
     private ArrayList<Email> bandejaEnviados = new ArrayList<>();
 
-    public void enviarEmail(Email email, Contacto persona){
-        bandejaEnviados.add(email);
-    }
-
+  
     public ArrayList<Email> getBandejaEnviados(Contacto persona){
         return bandejaEnviados;
-    }
-
-    public void recibirEmail(Email email, Contacto persona){
-        bandejaEntrada.add(email);
     }
 
     public ArrayList<Email> getBandejaEntrada(Contacto persona){
@@ -28,5 +23,28 @@ public class EmailManager {
     public void setBandejaEntrada(ArrayList<Email> bandejaEntrada) {
         this.bandejaEntrada = bandejaEntrada;
     }
+
+    //general
+    public ArrayList<Email> filtros (ArrayList<Email> email,  Predicate<Email> filtro){
+           
+            return email.stream()
+                        .filter(filtro)
+                        .collect(Collectors.toCollection(ArrayList::new));
+    }
+    //fitro asunto
+    public Predicate<Email> filtroPorAsunto(String asuntoparaFiltrar){
+        Predicate<Email> filtro= e -> e.getAsunto().contains(asuntoparaFiltrar);
+        return filtro; 
+    }
+
     
-}
+
+
+
+
+
+
+
+
+}  
+ 
