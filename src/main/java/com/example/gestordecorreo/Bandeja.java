@@ -44,6 +44,10 @@ public class Bandeja  {
         return filtro; 
     }
 
+    public Predicate<Email> filtroContenido(String filtradoporContenido){
+        Predicate<Email> filtro= e -> e.getContenido().contains(filtradoporContenido);
+        return filtro; 
+    }
 
 
 
