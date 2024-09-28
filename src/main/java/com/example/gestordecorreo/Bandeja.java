@@ -37,6 +37,17 @@ public class Bandeja  {
         return filtro; 
     }
 
+
+    //filtro remitente
+    public Predicate<Email> filtroPorRemitente(Contacto contactoAFiltrar){
+        Predicate<Email> filtro= e -> e.getRemitente().equals(contactoAFiltrar);
+        return filtro; 
+    }
+
+
+
+
+
     
 
 
