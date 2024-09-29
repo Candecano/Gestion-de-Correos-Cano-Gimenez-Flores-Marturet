@@ -1,9 +1,8 @@
 package com.example.gestordecorreo;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
 public class ContactoTest {
     @Test
     void crear_contacto_test() {
@@ -12,5 +11,7 @@ public class ContactoTest {
         assert(persona1 != null);
         
     }
+
+    
 
 }
