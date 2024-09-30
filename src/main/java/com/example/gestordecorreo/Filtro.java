@@ -21,17 +21,12 @@ public class Filtro {
         return descripcion;
     }
 
+    public void agregarFiltro(Filtro filtro) {
+        
+    }
 
-
-
-
-
-
-
-
-
-
-
+    
+    
 
 
 
