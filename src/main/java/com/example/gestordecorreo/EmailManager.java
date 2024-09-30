@@ -2,31 +2,27 @@ package com.example.gestordecorreo;
 import java.util.ArrayList;
 
 public class EmailManager {
-    private ArrayList<Email> bandejaEntrada = new ArrayList<>();
-    private ArrayList<Email> bandejaEnviados = new ArrayList<>();
 
-    public void enviarEmail(Email email, Contacto persona){
-        bandejaEnviados.add(email);
+    private Bandeja bandeja;
+
+    public EmailManager(){
+        this.bandeja = new Bandeja();
     }
 
-    public ArrayList<Email> getBandejaEnviados(Contacto persona){
-        return bandejaEnviados;
+    public void enviarEmail(Email email, Contacto persona){
+        bandeja.getBandejaEnviados(persona).add(email);
     }
 
     public void recibirEmail(Email email, Contacto persona){
-        bandejaEntrada.add(email);
+        bandeja.getBandejaEntrada(persona).add(email);
+    }
+
+    public ArrayList<Email> getBandejaEnviados(Contacto persona){
+        return bandeja.getBandejaEnviados(persona);
     }
 
     public ArrayList<Email> getBandejaEntrada(Contacto persona){
-        return bandejaEntrada;
-    }
-
-    public void setBandejaEnviados(ArrayList<Email> bandejaEnviados) {
-        this.bandejaEnviados = bandejaEnviados;
-    }
-
-    public void setBandejaEntrada(ArrayList<Email> bandejaEntrada) {
-        this.bandejaEntrada = bandejaEntrada;
+        return bandeja.getBandejaEntrada(persona);
     }
     
 }

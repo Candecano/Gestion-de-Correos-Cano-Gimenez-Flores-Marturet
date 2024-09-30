@@ -1,6 +1,8 @@
 package com.example.gestordecorreo;
 
+import java.util.ArrayList;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Filtro {
     private String descripcion;
@@ -18,5 +20,20 @@ public class Filtro {
     public String getDescripcion() {
         return descripcion;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 

@@ -14,7 +14,6 @@ public class BandejaTest {
 		Email e2 = new Email();
 		Email e3 = new Email();
 		Email e4 = new Email();
-		
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
         Contacto persona2 = new Contacto("Candela", "joaco@gmail.com"); 
@@ -77,12 +76,11 @@ public class BandejaTest {
 	@Test 
     void filtro_por_remitente(){
 		//primer correo
-		Bandeja b1 = new Bandeja();
         Email e1 = new Email();
 		Email e2 = new Email();
 		Email e3 = new Email();
 		Email e4 = new Email();
-		
+		Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
         Contacto persona2 = new Contacto("Candela", "candelaria@gmail.com"); 
@@ -218,16 +216,5 @@ public class BandejaTest {
 	   	assertEquals(2, emailsfiltrados.size());
 	
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }

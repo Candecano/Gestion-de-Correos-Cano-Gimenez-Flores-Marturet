@@ -41,6 +41,7 @@ public class EmailTest {
     @Test
     void enviar_email_test(){
         Email e1 = new Email();
+        Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
 
@@ -50,6 +51,7 @@ public class EmailTest {
         e1.setRemitente(persona1);
 
         em1.enviarEmail(e1, persona1);
+        
         assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
 
     }
@@ -58,11 +60,12 @@ public class EmailTest {
 
     @Test
     void se_manda_mail_y_se_recibe(){
+        Bandeja b1 = new Bandeja();
         Email e1 = new Email();
         EmailManager em1 = new EmailManager();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
         Contacto persona2 = new Contacto("Joaquin Flores", "joaco@gmail.com"); 
-
+  
         e1.setAsunto("Universidad");
         e1.setContenido("holaaa");
         e1.setRemitente(persona1);
@@ -70,11 +73,9 @@ public class EmailTest {
 
         em1.enviarEmail(e1, persona1);
         assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
-
+        
         em1.recibirEmail(e1,persona2);
         assertTrue(em1.getBandejaEntrada(persona2).size() == 1);
-
-        
     }
 
     
