@@ -30,7 +30,8 @@ public void setBandejaEntrada(ArrayList<Email> bandejaEntrada) {
             
     return email.stream()
                 .filter(filtro)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors
+                .toCollection(ArrayList::new));
 }
 
 //fitro asunto
