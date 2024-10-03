@@ -1,12 +1,13 @@
 package com.example.gestordecorreo;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class FiltroTest {
 
@@ -41,7 +42,7 @@ public class FiltroTest {
 
 
     @Test
-    void filtros_complejos_test(){
+    void filtros_complejos_test_entrada(){
         Email e1 = new Email();
         Email e2 = new Email();
         EmailManager em1 = new EmailManager();
@@ -86,6 +87,82 @@ public class FiltroTest {
         assertTrue(correosFiltrados.contains(e1));
         assertFalse(correosFiltrados.contains(e2));
     }
+
+    @Test
+    void filtro_compuesto_bandeja_enviados(){
+        Email e1 = new Email();
+        Email e2 = new Email();
+        EmailManager em1 = new EmailManager();
+        Contacto persona1 = new Contacto("Candela Cano ", "cande@gmail.com");
+        Contacto persona2 = new Contacto("Jose Fernandez", "jose@gmail.com");
+        Contacto persona3= new Contacto("Gilda Romero", "gromero@gmail.com");
+      
+
+      //primer email de persona 1 a destinatario 2
+       e1.setAsunto("Trabajo Practico 2");
+        e1.setContenido("Le envio mi Trabajo Práctico número 2");
+        e1.setRemitente(persona1);
+        e1.agregarDestinatario(persona2);
+
+       em1.enviarEmail(e1, persona1);
+        em1.recibirEmail(e1, persona2);
+
+        // Email de persona 1 a destinatario 3
+        e2.setAsunto("Cambio fecha");
+        e2.setContenido("Podemos cambiar la fecha del parcial?");
+        e2.setRemitente(persona1);
+        e2.agregarDestinatario(persona3);
+
+        em1.enviarEmail(e2, persona1);
+        em1.recibirEmail(e2, persona3);
+
+        // Definir los predicados y filtros
+        
+          Predicate<Email> predicado = email -> email.getAsunto().contains("Trabajo Practico 2");
+          Predicate<Email> predicado2 = email -> email.getDestinatarios().contains(persona2);
+        Filtro f1 = new Filtro("Correos que contengan asunto Trabajo Practico 2", predicado);
+        Filtro f2 = new Filtro("Correos para la  persona2", predicado2);
+
+        Predicate<Email> predicadoFinal = f1.getPredicado().and(f2.getPredicado());
+
+
+
+       ArrayList<Email> correosEnBandeja = em1.getBandejaEnviados(persona1);
+
+
+        ArrayList<Email> correosFiltrados = correosEnBandeja.stream()
+                                                    .filter(predicadoFinal)
+                                                    .collect(Collectors
+                                                    .toCollection(ArrayList::new));
+
+        assertEquals(1, correosFiltrados.size());
+        assertTrue(correosFiltrados.contains(e1));
+        assertFalse(correosFiltrados.contains(e2));
+
+
+
+
+
+
+
+
+
+    
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
