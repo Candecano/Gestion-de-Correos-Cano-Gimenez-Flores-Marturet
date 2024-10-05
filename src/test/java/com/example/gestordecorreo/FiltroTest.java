@@ -2,7 +2,6 @@ package com.example.gestordecorreo;
 
 import java.util.ArrayList;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -32,11 +31,7 @@ void filtro_por_asunto_simple(){
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
-        em1.enviarEmail(e1, persona1);
-        assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
-
-        em1.recibirEmail(e1,persona2);
-        assertTrue(em1.getBandejaEntrada(persona2).size() == 1);
+        em1.enviarEmail(e1);
 
 		//segundo mail
 		e2.setAsunto("Universidad");
@@ -44,11 +39,7 @@ void filtro_por_asunto_simple(){
 		e2.setRemitente(persona1);
 		e2.agregarDestinatario(persona2);
 
-		em1.enviarEmail(e2, persona1);
-		assertTrue(em1.getBandejaEnviados(persona1).size() == 2);
-
-		em1.recibirEmail(e2,persona2);
-		assertTrue(em1.getBandejaEntrada(persona2).size() == 2);
+		em1.enviarEmail(e2);
 
 		//tercer mail
 		e3.setAsunto("Universidad");
@@ -56,11 +47,7 @@ void filtro_por_asunto_simple(){
        	e3.setRemitente(persona1);
        	e3.agregarDestinatario(persona2);
 
-		em1.enviarEmail(e3, persona1);
-		assertTrue(em1.getBandejaEnviados(persona1).size() == 3);
-
-		em1.recibirEmail(e3,persona2);
-		assertTrue(em1.getBandejaEntrada(persona2).size() == 3);
+		em1.enviarEmail(e3);
 	   
 		//cuarto email
 		e4.setAsunto("Universidad");
@@ -68,11 +55,7 @@ void filtro_por_asunto_simple(){
 		e4.setRemitente(persona1);
 		e4.agregarDestinatario(persona2);
 
-		em1.enviarEmail(e4, persona1);
-		assertTrue(em1.getBandejaEnviados(persona1).size() == 4);
-
-		em1.recibirEmail(e4 ,persona2);
-		assertTrue(em1.getBandejaEntrada(persona2).size() == 4);
+		em1.enviarEmail(e4);
 
 
         String asuntoParaFiltrar = "Universidad";
@@ -106,11 +89,7 @@ void filtro_por_asunto_simple(){
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
-        em1.enviarEmail(e1, persona1);
-        assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
-
-        em1.recibirEmail(e1,persona2);
-        assertTrue(em1.getBandejaEntrada(persona2).size() == 1);
+        em1.enviarEmail(e1);
 
 		//primer mail persona 3 a persona 2
 		e2.setAsunto("Universidad");
@@ -118,11 +97,7 @@ void filtro_por_asunto_simple(){
 		e2.setRemitente(persona3);
 		e2.agregarDestinatario(persona2);
 
-		em1.enviarEmail(e2, persona3);
-		assertTrue(em1.getBandejaEnviados(persona3).size() == 2);
-
-		em1.recibirEmail(e2,persona2);
-		assertTrue(em1.getBandejaEntrada(persona2).size() == 2);
+		em1.enviarEmail(e2);
 
 		//tercer mail
 		//persona 4 a persona 2(primer mail)
@@ -131,11 +106,7 @@ void filtro_por_asunto_simple(){
        	e3.setRemitente(persona4);
        	e3.agregarDestinatario(persona2);
 
-		em1.enviarEmail(e3, persona4);
-		assertTrue(em1.getBandejaEnviados(persona4).size() == 3);
-
-		em1.recibirEmail(e3,persona2);
-		assertTrue(em1.getBandejaEntrada(persona2).size() == 3);
+		em1.enviarEmail(e3);
 	   
 		//cuarto email
 		//persona 4 a persona 2(segundo mail)
@@ -144,11 +115,7 @@ void filtro_por_asunto_simple(){
 		e4.setRemitente(persona4);
 		e4.agregarDestinatario(persona2);
 
-		em1.enviarEmail(e4, persona4);
-		assertTrue(em1.getBandejaEnviados(persona4).size() == 4);
-
-		em1.recibirEmail(e4 ,persona2);
-		assertTrue(em1.getBandejaEntrada(persona2).size() == 4);
+		em1.enviarEmail(e4);
 
  
         ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEntrada(persona2), b1.filtroPorRemitente(persona4));
@@ -167,8 +134,6 @@ void filtro_por_asunto_simple(){
 		//primer correo
         Email e1 = new Email();
 		Email e2 = new Email();
-		Email e3 = new Email();
-		Email e4 = new Email();
         Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
@@ -182,11 +147,7 @@ void filtro_por_asunto_simple(){
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
-        em1.enviarEmail(e1, persona1);
-        assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
-
-        em1.recibirEmail(e1,persona2);
-        assertTrue(em1.getBandejaEntrada(persona2).size() == 1);
+        em1.enviarEmail(e1);
      
         //persona 1 manda email a persona3 y persona 4
 		e2.setAsunto("Universidad");
@@ -195,9 +156,7 @@ void filtro_por_asunto_simple(){
 		e2.agregarDestinatario(persona3);
 		e2.agregarDestinatario(persona4);
        //persona 1 manda el email y persona 2 lo recibe
-		em1.enviarEmail(e2, persona1);
-		em1.recibirEmail(e2,persona3);
-		em1.recibirEmail(e2,persona4);
+		em1.enviarEmail(e2);
 			
         ArrayList<Contacto> destinatarios = e2.getDestinatarios();
 		
@@ -235,9 +194,11 @@ void filtro_por_asunto_simple(){
 
         Email e1 = new Email();
         e1.setAsunto("Subir las notas porfavor es importante");
-        em1.enviarEmail(e1, persona2);
+        e1.setRemitente(persona1);
+        em1.enviarEmail(e1);
 
         Email e2 = new Email();
+        e1.setRemitente(persona2);
         e2.setAsunto("Esto no pinta nada bien");
 
         assertTrue(filtro.getPredicado().test(e1));
@@ -268,8 +229,7 @@ void filtro_por_asunto_simple(){
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
-        em1.enviarEmail(e1, persona1);
-        em1.recibirEmail(e1, persona2);
+        em1.enviarEmail(e1);
 
         // Segundo mail de persona 1 a persona 2
         e2.setAsunto("Universidad");
@@ -277,8 +237,7 @@ void filtro_por_asunto_simple(){
         e2.setRemitente(persona1);
         e2.agregarDestinatario(persona2);
 
-        em1.enviarEmail(e2, persona1);
-        em1.recibirEmail(e2, persona2);
+        em1.enviarEmail(e2);
 
         ArrayList<Email> correosFiltrados = b1.filtros(em1.getBandejaEntrada(persona2), predicadoFinal);
 
@@ -304,8 +263,7 @@ void filtro_por_asunto_simple(){
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
-        em1.enviarEmail(e1, persona1);
-        em1.recibirEmail(e1, persona2);
+        em1.enviarEmail(e1);
 
         // Email de persona 1 a destinatario 3
         e2.setAsunto("Cambio fecha");
@@ -313,8 +271,7 @@ void filtro_por_asunto_simple(){
         e2.setRemitente(persona1);
         e2.agregarDestinatario(persona3);
 
-        em1.enviarEmail(e2, persona1);
-        em1.recibirEmail(e2, persona3);
+        em1.enviarEmail(e2);
 
         // Definir los predicados y filtros
         
