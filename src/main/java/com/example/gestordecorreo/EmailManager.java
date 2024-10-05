@@ -9,13 +9,14 @@ public class EmailManager {
         this.bandeja = new Bandeja();
     }
 
-    public void enviarEmail(Email email, Contacto persona){
-        bandeja.getBandejaEnviados(persona).add(email);
+    public void enviarEmail(Email email) {
+    bandeja.getBandejaEnviados(email.getRemitente()).add(email);
+    
+        for (Contacto destinatario : email.getDestinatarios()) {
+            bandeja.getBandejaEntrada(destinatario).add(email);
+        }
     }
 
-    public void recibirEmail(Email email, Contacto persona){
-        bandeja.getBandejaEntrada(persona).add(email);
-    }
 
     public ArrayList<Email> getBandejaEnviados(Contacto persona){
         return bandeja.getBandejaEnviados(persona);
