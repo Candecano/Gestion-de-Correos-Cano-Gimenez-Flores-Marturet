@@ -57,7 +57,6 @@ void filtro_por_asunto_simple(){
 
 		em1.enviarEmail(e4);
 
-
         String asuntoParaFiltrar = "Universidad";
  
         ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEntrada(persona2), b1.filtroPorAsunto(asuntoParaFiltrar));
@@ -117,7 +116,6 @@ void filtro_por_asunto_simple(){
 
 		em1.enviarEmail(e4);
 
- 
         ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEntrada(persona2), b1.filtroPorRemitente(persona4));
 
         assertEquals(2, emailsfiltrados.size());
@@ -162,17 +160,13 @@ void filtro_por_asunto_simple(){
 		
         ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEnviados(persona1), b1.filtroPorDestinatario(destinatarios));
 
-
         assertEquals(1, emailsfiltrados.size());
         //se verifica la existencia de los correos en correosfiltrados
         assertTrue(emailsfiltrados.contains(e2));
         assertFalse(emailsfiltrados.contains(e1));
- 
-	
 	}
 
     //TEST CON FILTROS COMPLEJOS
-
     @Test
     void se_comprueba_la_descripcion_test() {
         Bandeja b1 = new Bandeja();
@@ -256,7 +250,6 @@ void filtro_por_asunto_simple(){
         Contacto persona2 = new Contacto("Jose Fernandez", "jose@gmail.com");
         Contacto persona3 = new Contacto("Gilda Romero", "gromero@gmail.com");
       
-
       //primer email de persona 1 a destinatario 2
         e1.setAsunto("Trabajo Practico 2");
         e1.setContenido("Le envio mi Trabajo Práctico número 2");
@@ -274,7 +267,6 @@ void filtro_por_asunto_simple(){
         em1.enviarEmail(e2);
 
         // Definir los predicados y filtros
-        
         Predicate<Email> predicado = b1.filtroPorAsunto("Trabajo Practico 2");
         Predicate<Email> predicado2 = b1.filtroPorDestinatario(e1.getDestinatarios());
         Filtro f1 = new Filtro("Correos que contengan asunto Trabajo Practico 2", predicado);
@@ -287,7 +279,6 @@ void filtro_por_asunto_simple(){
         assertEquals(1, correosFiltrados.size());
         assertTrue(correosFiltrados.contains(e1));
         assertFalse(correosFiltrados.contains(e2));
-
     }
 
   

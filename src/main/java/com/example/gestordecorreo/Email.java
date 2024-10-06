@@ -1,8 +1,6 @@
 package com.example.gestordecorreo;
 import java.util.*;
 
-
-
 public class Email  {
     private String asunto;
     private String contenido;

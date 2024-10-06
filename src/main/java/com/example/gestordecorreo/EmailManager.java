@@ -26,4 +26,12 @@ public class EmailManager {
         return bandeja.getBandejaEntrada(persona);
     }
     
+    public void borrarEmail(ArrayList<Email> bandeja, Email email ){
+        bandeja.remove(email);
+
+    }
+
+//add y removwe
+
+
 }
