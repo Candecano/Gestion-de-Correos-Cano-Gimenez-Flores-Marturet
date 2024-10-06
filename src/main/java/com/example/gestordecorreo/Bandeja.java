@@ -1,7 +1,6 @@
 package com.example.gestordecorreo;
 import java.util.ArrayList;
-
-import java.util.function.Predicate;
+import  java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 
@@ -52,21 +51,13 @@ public Predicate<Email> filtroPorDestinatario(ArrayList<Contacto> destinatariosA
     return filtro; 
 }
 
+//filtrar correos de la ucp
+public Predicate<Email> filtroPorDominio(String email){
+    Predicate<Email> filtro= e -> e.getRemitente().getEmail().contains(email);
+    return filtro; 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 

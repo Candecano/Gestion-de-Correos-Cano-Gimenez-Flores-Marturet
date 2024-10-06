@@ -166,6 +166,41 @@ void filtro_por_asunto_simple(){
         assertFalse(emailsfiltrados.contains(e1));
 	}
 
+    @Test 
+    void filtro_por_dominio_test(){
+		
+		//primer correo
+        Email e1 = new Email();
+		Email e2 = new Email();
+        Bandeja b1 = new Bandeja();
+        EmailManager em1 = new EmailManager();	
+        Contacto persona1 = new Contacto("Joaquin Flores", "info@ucp.edu.ar");
+        Contacto persona2 = new Contacto("Candela", "candelaria@gmail.com"); 
+        Contacto persona3 = new Contacto("Carla", "alumnado@ucp.edu.ar"); 
+        
+		//primer mail de cuenca a yo(persona2)
+        e1.setAsunto("Trabajo");
+        e1.setContenido("holaaa");
+        e1.setRemitente(persona1);
+        e1.agregarDestinatario(persona2);
+
+        em1.enviarEmail(e1);
+     
+        //segundo mail de cuenca a yo(persona2)
+		e2.setAsunto("Universidad");
+		e2.setContenido("Revisen el Trabajo");
+		e2.setRemitente(persona3);
+		e2.agregarDestinatario(persona2);
+
+		em1.enviarEmail(e2);
+			
+        ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEntrada(persona2), b1.filtroPorDominio("@ucp.edu.ar"));
+      
+
+        assertEquals(2, emailsfiltrados.size());
+
+	}
+
     //TEST CON FILTROS COMPLEJOS
     @Test
     void se_comprueba_la_descripcion_test() {

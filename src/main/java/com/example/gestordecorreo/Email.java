@@ -6,10 +6,15 @@ public class Email  {
     private String contenido;
     private Contacto remitente;
     private ArrayList<Contacto> destinatarios;
+    private String dominio;
     
     
     public Email(){
         destinatarios = new ArrayList<Contacto>();
+    }
+
+    public Email(String dominio) {
+        this.dominio = dominio;
     }
 
     public String getAsunto(){
@@ -44,6 +49,7 @@ public class Email  {
         destinatarios.add(valor);
     }
 
+    
 
    
     
