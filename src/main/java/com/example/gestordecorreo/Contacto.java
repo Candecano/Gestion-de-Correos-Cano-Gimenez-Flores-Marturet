@@ -1,4 +1,6 @@
 package com.example.gestordecorreo;
+import  java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Contacto {
     private String nombreCompleto;
@@ -24,5 +26,12 @@ public class Contacto {
     public void setEmail(String valor){
         email = valor;
     }
- 
+    
+    public boolean validarEmail(String email){
+        Pattern pattern= Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.find();
+
+    }
+    
 }

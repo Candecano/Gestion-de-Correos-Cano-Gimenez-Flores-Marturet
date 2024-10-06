@@ -1,7 +1,6 @@
 package com.example.gestordecorreo;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 public class EmailTest {
 
@@ -70,6 +69,13 @@ public class EmailTest {
         em1.enviarEmail(e1);
         assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
         assertTrue(em1.getBandejaEntrada(persona2).size() == 1);
+    }
+
+    @Test
+    void prueba_de_correo_valido(){
+        Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
+        
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
     }
 
     
