@@ -8,7 +8,7 @@ public class Email  {
     private ArrayList<Contacto> destinatarios;
     private String dominio;
     
-    
+    //elemento del email
     public Email(){
         destinatarios = new ArrayList<Contacto>();
     }

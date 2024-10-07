@@ -1,4 +1,6 @@
 package com.example.gestordecorreo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +10,6 @@ public class EmailTest {
     void crear_email_test(){
         Email e1 = new Email();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-
 
         e1.setAsunto("Universidad");
         e1.setContenido("holaaa");
@@ -73,6 +74,12 @@ public class EmailTest {
         assertTrue(persona1.validarEmail(persona1.getEmail()));
     }
 
+    //test para la cobertura de jacoco
+    @Test
+    public void validar_Email_Incorrecto() {
+        Contacto contacto = new Contacto("Joaquin Flores", "joaquinho@gmail.com");
+        assertFalse(contacto.validarEmail("joaquinho@example"));
+    }
 
     @Test
     void se_manda_mail_y_se_borra_de_bandeja_de_enviados_test(){
@@ -93,6 +100,18 @@ public class EmailTest {
         assertTrue(em1.getBandejaEnviados(persona1).isEmpty());
         
     }
+
+//test para jacoco
+ @Test
+    public void Set_GetContenido() {
+        Email email = new Email();
+        email.setContenido("Este es el contenido del correo.");
+        assertEquals("Este es el contenido del correo.", email.getContenido());
+    }
+
+
+
+
 
     
     

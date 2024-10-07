@@ -99,7 +99,7 @@ void filtro_por_asunto_simple(){
 		em1.enviarEmail(e2);
 
 		//tercer mail
-		//persona 4 a persona 2(primer mail)
+		//persona 4 a persona 2
 		e3.setAsunto("Universidad");
        	e3.setContenido("holaaa");
        	e3.setRemitente(persona4);
@@ -108,7 +108,7 @@ void filtro_por_asunto_simple(){
 		em1.enviarEmail(e3);
 	   
 		//cuarto email
-		//persona 4 a persona 2(segundo mail)
+		//persona 4 a persona 2
 		e4.setAsunto("Universidad");
 		e4.setContenido("holaaa");
 		e4.setRemitente(persona4);
@@ -129,7 +129,6 @@ void filtro_por_asunto_simple(){
 	@Test 
     void filtro_por_destinatarios(){
 		
-		//primer correo
         Email e1 = new Email();
 		Email e2 = new Email();
         Bandeja b1 = new Bandeja();
@@ -153,7 +152,7 @@ void filtro_por_asunto_simple(){
 		e2.setRemitente(persona1);
 		e2.agregarDestinatario(persona3);
 		e2.agregarDestinatario(persona4);
-       //persona 1 manda el email y persona 2 lo recibe
+
 		em1.enviarEmail(e2);
 			
         ArrayList<Contacto> destinatarios = e2.getDestinatarios();
@@ -178,7 +177,7 @@ void filtro_por_asunto_simple(){
         Contacto persona2 = new Contacto("Candela", "candelaria@gmail.com"); 
         Contacto persona3 = new Contacto("Carla", "alumnado@ucp.edu.ar"); 
         
-		//primer mail de cuenca a yo(persona2)
+		//primer mail de cuenca (persona1) a yo(persona2)
         e1.setAsunto("Trabajo");
         e1.setContenido("holaaa");
         e1.setRemitente(persona1);
@@ -186,7 +185,7 @@ void filtro_por_asunto_simple(){
 
         em1.enviarEmail(e1);
      
-        //segundo mail de cuenca a yo(persona2)
+        //segundo mail de cuenca (persona3) a yo(persona2)
 		e2.setAsunto("Universidad");
 		e2.setContenido("Revisen el Trabajo");
 		e2.setRemitente(persona3);
@@ -285,7 +284,7 @@ void filtro_por_asunto_simple(){
         Contacto persona2 = new Contacto("Jose Fernandez", "jose@gmail.com");
         Contacto persona3 = new Contacto("Gilda Romero", "gromero@gmail.com");
       
-      //primer email de persona 1 a destinatario 2
+        //primer email de persona 1 a destinatario 2
         e1.setAsunto("Trabajo Practico 2");
         e1.setContenido("Le envio mi Trabajo Práctico número 2");
         e1.setRemitente(persona1);
@@ -319,5 +318,3 @@ void filtro_por_asunto_simple(){
   
 
 }
-
-

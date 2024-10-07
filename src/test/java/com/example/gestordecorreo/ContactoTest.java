@@ -1,7 +1,9 @@
 package com.example.gestordecorreo;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+//test para cobertura de jacoco
 
 public class ContactoTest {
     @Test
@@ -12,6 +14,27 @@ public class ContactoTest {
         
     }
 
+@Test
+    public void test_GetNombre() {
+        Contacto contacto = new Contacto("Taylor Swift", "ts13@gmail.com");
+        assertEquals("Taylor Swift", contacto.getNombre());
+    }
     
+
+@Test
+    public void test_SetNombre() {
+        Contacto contacto = new Contacto("Candelaria", "candelaria9@gmail.com");
+        contacto.setNombre("Carla Marturet");
+        assertEquals("Carla Marturet", contacto.getNombre());
+    }
+
+
+
+
+
+
+
+
+
 
 }
