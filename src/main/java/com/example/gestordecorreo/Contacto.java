@@ -23,9 +23,6 @@ public class Contacto {
         return email;
     }
 
-    public void setEmail(String valor){
-        email = valor;
-    }
     //recibe la direccion de  email a validar
     //devuelve valor booleano 
     //clase Pattern: utiliza un patron de expresion regular para validar un email

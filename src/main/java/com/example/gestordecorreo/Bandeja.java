@@ -1,6 +1,6 @@
 package com.example.gestordecorreo;
 import java.util.ArrayList;
-import  java.util.function.Predicate;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 
@@ -15,14 +15,6 @@ public ArrayList<Email> getBandejaEnviados(Contacto persona){
 
 public ArrayList<Email> getBandejaEntrada(Contacto persona){
     return bandejaEntrada;
-}
-
-public void setBandejaEnviados(ArrayList<Email> bandejaEnviados) {
-    this.bandejaEnviados = bandejaEnviados;
-}
-
-public void setBandejaEntrada(ArrayList<Email> bandejaEntrada) {
-    this.bandejaEntrada = bandejaEntrada;
 }
 
 //metodos de filtros simples
