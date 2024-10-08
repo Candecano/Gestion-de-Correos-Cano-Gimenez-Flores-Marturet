@@ -24,6 +24,10 @@ void filtro_por_asunto_simple(){
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
         Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
+
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
 		
         //primer mail
         e1.setAsunto("Trabajo");
@@ -66,6 +70,8 @@ void filtro_por_asunto_simple(){
         assertTrue(emailsfiltrados.contains(e2));
         assertTrue(emailsfiltrados.contains(e3));
         assertTrue(emailsfiltrados.contains(e4));  
+
+       
 	}
 
     @Test 
@@ -78,9 +84,15 @@ void filtro_por_asunto_simple(){
         Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Candela", "candelaria@gmail.com"); 
-		Contacto persona3 = new Contacto("Carla", "carlita@gmail.com"); 
-		Contacto persona4 = new Contacto("Taylor", "ts13@gmail.com"); 
+        Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
+		Contacto persona3 = new Contacto("Carla  Marturet", "carlita@gmail.com"); 
+		Contacto persona4 = new Contacto("Taylor Swift", "ts13@gmail.com"); 
+
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
+        assertTrue(persona3.validarEmail(persona3.getEmail()));
+        assertTrue(persona4.validarEmail(persona4.getEmail()));
         
 		//primer mail de persona 1 a persona 2
         e1.setAsunto("Trabajo");
@@ -123,6 +135,8 @@ void filtro_por_asunto_simple(){
         assertFalse(emailsfiltrados.contains(e2));
         assertTrue(emailsfiltrados.contains(e3));
         assertTrue(emailsfiltrados.contains(e4));
+
+       
 	
 	}
 
@@ -134,10 +148,16 @@ void filtro_por_asunto_simple(){
         Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Candela", "candelaria@gmail.com"); 
-		Contacto persona3 = new Contacto("Carla", "carlita@gmail.com"); 
-		Contacto persona4 = new Contacto("Taylor", "ts13@gmail.com"); 
-        
+        Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
+		Contacto persona3 = new Contacto("Carla Marturet", "carlita@gmail.com"); 
+		Contacto persona4 = new Contacto("Taylor Swift", "ts13@gmail.com"); 
+
+        //comprobar que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
+        assertTrue(persona3.validarEmail(persona3.getEmail()));
+        assertTrue(persona4.validarEmail(persona4.getEmail()));
+
 		//primer mail de persona 1 a persona 2
         e1.setAsunto("Trabajo");
         e1.setContenido("Subir las notas porfavor es importante");
@@ -163,6 +183,8 @@ void filtro_por_asunto_simple(){
         //se verifica la existencia de los correos en correosfiltrados
         assertTrue(emailsfiltrados.contains(e2));
         assertFalse(emailsfiltrados.contains(e1));
+
+    
 	}
 
     @Test 
@@ -174,8 +196,13 @@ void filtro_por_asunto_simple(){
         Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "info@ucp.edu.ar");
-        Contacto persona2 = new Contacto("Candela", "candelaria@gmail.com"); 
-        Contacto persona3 = new Contacto("Carla", "alumnado@ucp.edu.ar"); 
+        Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
+        Contacto persona3 = new Contacto("Carla Marturet", "alumnado@ucp.edu.ar"); 
+
+        //comprobar que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
+        assertTrue(persona3.validarEmail(persona3.getEmail()));
         
 		//primer mail de cuenca (persona1) a yo(persona2)
         e1.setAsunto("Trabajo");
@@ -197,6 +224,7 @@ void filtro_por_asunto_simple(){
       
 
         assertEquals(2, emailsfiltrados.size());
+       
 
 	}
 
@@ -215,10 +243,14 @@ void filtro_por_asunto_simple(){
     void se_comprueba_el_predicado_test() {
         Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();
-        Contacto persona1 = new Contacto("Joaco", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Joaco", "joaco@gmail.com");
+        Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
+        Contacto persona2 = new Contacto("Jaqueline Escalante", "jaqui@gmail.com");
         Predicate<Email> predicado = b1.filtroPorAsunto("importante");
         Filtro filtro = new Filtro("Filtro por asunto importante", predicado);
+
+        //comprobar de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
 
         Email e1 = new Email();
         e1.setAsunto("Subir las notas porfavor es importante");
@@ -239,8 +271,10 @@ void filtro_por_asunto_simple(){
         Email e2 = new Email();
         EmailManager em1 = new EmailManager();
 
-        Contacto persona1 = new Contacto("Joaco", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Cande", "cande@gmail.com");
+        Contacto persona1 = new Contacto("Joaquin Flores ", "joaco@gmail.com");
+        Contacto persona2 = new Contacto("Candela Cano", "cande@gmail.com");    
+
+        
         Bandeja b1 = new Bandeja();
 
         // Definir los predicados y filtros
@@ -282,7 +316,12 @@ void filtro_por_asunto_simple(){
         EmailManager em1 = new EmailManager();
         Contacto persona1 = new Contacto("Candela Cano ", "cande@gmail.com");
         Contacto persona2 = new Contacto("Jose Fernandez", "jose@gmail.com");
-        Contacto persona3 = new Contacto("Gilda Romero", "gromero@gmail.com");
+        Contacto persona3 = new Contacto("Jaqueline Escalante", "jaqueline@gmail.com");
+
+        //comprobar de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
+        assertTrue(persona3.validarEmail(persona3.getEmail()));
       
         //primer email de persona 1 a destinatario 2
         e1.setAsunto("Trabajo Practico 2");

@@ -14,6 +14,8 @@ public class EmailTest {
         e1.setAsunto("Universidad");
         e1.setContenido("Quiero consultar mis horarioa");
         e1.setRemitente(persona1);
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
     }
 
     @Test
@@ -21,7 +23,7 @@ public class EmailTest {
         Email e1 = new Email();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
         Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
-        Contacto persona3 = new Contacto("Carla Marturet", "@carla@gmail.com"); 
+        Contacto persona3 = new Contacto("Carla Marturet", "carla@gmail.com"); 
 
         e1.setAsunto("Universidad");
         e1.setContenido("Pueden cambiar la fecha del examen?");
@@ -30,6 +32,11 @@ public class EmailTest {
         e1.agregarDestinatario(persona3);
 
         assertTrue(e1.getDestinatarios().size() == 2);
+        
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
+        assertTrue(persona3.validarEmail(persona3.getEmail()));
     }
 
     @Test
@@ -47,6 +54,9 @@ public class EmailTest {
         
         assertTrue(persona1.bandeja.getBandejaEnviados().size() == 1);
 
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+
     }
 
     @Test
@@ -54,7 +64,8 @@ public class EmailTest {
         Email e1 = new Email();
         EmailManager em1 = new EmailManager();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Carla Marturet", "@carla@gmail.com"); 
+        Contacto persona2 = new Contacto("Carla Marturet", "carla@gmail.com"); 
+        Contacto persona3 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
         
         e1.setAsunto("Universidad");
         e1.setContenido("Darme de baja de la mesa de examen");
@@ -64,13 +75,18 @@ public class EmailTest {
         em1.enviarEmail(e1);
         assertTrue(persona1.bandeja.getBandejaEnviados().size() == 1);
         assertTrue(persona2.bandeja.getBandejaEntrada().size() == 1);
+        assertTrue(persona3.bandeja.getBandejaEntrada().size() == 0);
+
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
+        assertTrue(persona3.validarEmail(persona3.getEmail()));
     }
 
 
     @Test
     void prueba_de_correo_valido(){
-        Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-        
+        Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com"); 
         assertTrue(persona1.validarEmail(persona1.getEmail()));
     }
 
@@ -92,12 +108,27 @@ public class EmailTest {
         e1.setContenido("Pueden cambiar la fecha del examen?");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
-
+        //se asegura que el email se envio
         em1.enviarEmail(e1);
         assertTrue(persona1.bandeja.getBandejaEnviados().size() == 1);
+        assertTrue(persona2.bandeja.getBandejaEntrada().size() == 1);
 
+        //se borra el email de la bandeja de enviados
+        //se comprueba que el email no se borra de la bandeja de entrada del destinatario  
         em1.borrarEmail(persona1.bandeja.getBandejaEnviados(), e1);
         assertTrue(persona1.bandeja.getBandejaEnviados().isEmpty());
+        assertFalse(persona2.bandeja.getBandejaEntrada().isEmpty());
+
+        //prueba
+        //se borra el email de la bandeja de entrada
+        //el correo se borra de ambas bandejas, del remitente y de su destinatario
+        em1.borrarEmail(persona2.bandeja.getBandejaEntrada(), e1);
+        assertTrue(persona1.bandeja.getBandejaEnviados().isEmpty());
+        assertTrue(persona2.bandeja.getBandejaEntrada().isEmpty());
+
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
         
     }
 
@@ -107,6 +138,7 @@ public class EmailTest {
         Email email = new Email();
         email.setContenido("Este es el contenido del correo.");
         assertEquals("Este es el contenido del correo.", email.getContenido());
+        
     }
 
 
