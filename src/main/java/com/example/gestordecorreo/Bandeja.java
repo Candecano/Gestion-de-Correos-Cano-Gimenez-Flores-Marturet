@@ -9,11 +9,11 @@ public class Bandeja  {
     private ArrayList<Email> bandejaEnviados = new ArrayList<>();
 
   
-public ArrayList<Email> getBandejaEnviados(Contacto persona){
+public ArrayList<Email> getBandejaEnviados(){
     return bandejaEnviados;
 }
 
-public ArrayList<Email> getBandejaEntrada(Contacto persona){
+public ArrayList<Email> getBandejaEntrada(){
     return bandejaEntrada;
 }
 

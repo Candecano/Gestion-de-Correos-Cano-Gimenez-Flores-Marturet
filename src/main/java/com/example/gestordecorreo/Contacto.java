@@ -5,10 +5,12 @@ import java.util.regex.Pattern;
 public class Contacto {
     private String nombreCompleto;
     private String email;
+    public Bandeja bandeja;
 
     public Contacto(String nombreCompleto, String email) {
         this.nombreCompleto = nombreCompleto;
         this.email = email;
+        this.bandeja = new Bandeja();
     }
 
     public String getNombre() {

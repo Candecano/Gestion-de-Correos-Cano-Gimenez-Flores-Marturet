@@ -59,7 +59,7 @@ void filtro_por_asunto_simple(){
 
         String asuntoParaFiltrar = "Universidad";
  
-        ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEntrada(persona2), b1.filtroPorAsunto(asuntoParaFiltrar));
+        ArrayList<Email> emailsfiltrados = b1.filtros(persona2.bandeja.getBandejaEntrada(), b1.filtroPorAsunto(asuntoParaFiltrar));
 
         assertEquals(3, emailsfiltrados.size());
         //se verifica la existencia de los correos en correosfiltrados
@@ -116,7 +116,7 @@ void filtro_por_asunto_simple(){
 
 		em1.enviarEmail(e4);
 
-        ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEntrada(persona2), b1.filtroPorRemitente(persona4));
+        ArrayList<Email> emailsfiltrados = b1.filtros(persona2.bandeja.getBandejaEntrada(), b1.filtroPorRemitente(persona4));
 
         assertEquals(2, emailsfiltrados.size());
         //se verifica la existencia de los correos en correosfiltrados
@@ -157,7 +157,7 @@ void filtro_por_asunto_simple(){
 			
         ArrayList<Contacto> destinatarios = e2.getDestinatarios();
 		
-        ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEnviados(persona1), b1.filtroPorDestinatario(destinatarios));
+        ArrayList<Email> emailsfiltrados = b1.filtros(persona1.bandeja.getBandejaEnviados(), b1.filtroPorDestinatario(destinatarios));
 
         assertEquals(1, emailsfiltrados.size());
         //se verifica la existencia de los correos en correosfiltrados
@@ -193,7 +193,7 @@ void filtro_por_asunto_simple(){
 
 		em1.enviarEmail(e2);
 			
-        ArrayList<Email> emailsfiltrados = b1.filtros(em1.getBandejaEntrada(persona2), b1.filtroPorDominio("@ucp.edu.ar"));
+        ArrayList<Email> emailsfiltrados = b1.filtros(persona2.bandeja.getBandejaEntrada(), b1.filtroPorDominio("@ucp.edu.ar"));
       
 
         assertEquals(2, emailsfiltrados.size());
@@ -267,7 +267,7 @@ void filtro_por_asunto_simple(){
 
         em1.enviarEmail(e2);
 
-        ArrayList<Email> correosFiltrados = b1.filtros(em1.getBandejaEntrada(persona2), predicadoFinal);
+        ArrayList<Email> correosFiltrados = b1.filtros(persona2.bandeja.getBandejaEntrada(), predicadoFinal);
 
         assertEquals(1, correosFiltrados.size());
         assertTrue(correosFiltrados.contains(e1));
@@ -308,7 +308,7 @@ void filtro_por_asunto_simple(){
 
         Predicate<Email> predicadoFinal = f1.getPredicado().and(f2.getPredicado());
 
-        ArrayList<Email> correosFiltrados = b1.filtros(em1.getBandejaEnviados(persona1), predicadoFinal);
+        ArrayList<Email> correosFiltrados = b1.filtros(persona1.bandeja.getBandejaEnviados(), predicadoFinal);
 
         assertEquals(1, correosFiltrados.size());
         assertTrue(correosFiltrados.contains(e1));

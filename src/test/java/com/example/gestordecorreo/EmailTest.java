@@ -45,7 +45,7 @@ public class EmailTest {
 
         em1.enviarEmail(e1);
         
-        assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
+        assertTrue(persona1.bandeja.getBandejaEnviados().size() == 1);
 
     }
 
@@ -62,8 +62,8 @@ public class EmailTest {
         e1.agregarDestinatario(persona2);
 
         em1.enviarEmail(e1);
-        assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
-        assertTrue(em1.getBandejaEntrada(persona2).size() == 1);
+        assertTrue(persona1.bandeja.getBandejaEnviados().size() == 1);
+        assertTrue(persona2.bandeja.getBandejaEntrada().size() == 1);
     }
 
 
@@ -94,10 +94,10 @@ public class EmailTest {
         e1.agregarDestinatario(persona2);
 
         em1.enviarEmail(e1);
-        assertTrue(em1.getBandejaEnviados(persona1).size() == 1);
+        assertTrue(persona1.bandeja.getBandejaEnviados().size() == 1);
 
-        em1.borrarEmail(em1.getBandejaEnviados(persona1), e1);
-        assertTrue(em1.getBandejaEnviados(persona1).isEmpty());
+        em1.borrarEmail(persona1.bandeja.getBandejaEnviados(), e1);
+        assertTrue(persona1.bandeja.getBandejaEnviados().isEmpty());
         
     }
 
