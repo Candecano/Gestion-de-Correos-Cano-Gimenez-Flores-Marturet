@@ -12,7 +12,7 @@ public class EmailTest {
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
 
         e1.setAsunto("Universidad");
-        e1.setContenido("holaaa");
+        e1.setContenido("Quiero consultar mis horarioa");
         e1.setRemitente(persona1);
     }
 
@@ -21,10 +21,10 @@ public class EmailTest {
         Email e1 = new Email();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
         Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
-        Contacto persona3 = new Contacto("Carla Marturet", "@gmail.com"); 
+        Contacto persona3 = new Contacto("Carla Marturet", "@carla@gmail.com"); 
 
         e1.setAsunto("Universidad");
-        e1.setContenido("holaaa");
+        e1.setContenido("Pueden cambiar la fecha del examen?");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
         e1.agregarDestinatario(persona3);
@@ -54,10 +54,10 @@ public class EmailTest {
         Email e1 = new Email();
         EmailManager em1 = new EmailManager();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Joaquin Flores", "joaco@gmail.com"); 
-  
+        Contacto persona2 = new Contacto("Carla Marturet", "@carla@gmail.com"); 
+        
         e1.setAsunto("Universidad");
-        e1.setContenido("holaaa");
+        e1.setContenido("Darme de baja de la mesa de examen");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
@@ -86,10 +86,10 @@ public class EmailTest {
         Email e1 = new Email();
         EmailManager em1 = new EmailManager();
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Joaquin Flores", "joaco@gmail.com"); 
-  
+        Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
+
         e1.setAsunto("Universidad");
-        e1.setContenido("holaaa");
+        e1.setContenido("Pueden cambiar la fecha del examen?");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 

@@ -69,7 +69,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<!-- Plugin de JaCoCo para la cobertura de código -->
+			<!-- Plugin de JaCoCo para la cobertura de cÃ³digo -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

@@ -23,11 +23,11 @@ void filtro_por_asunto_simple(){
         Bandeja b1 = new Bandeja();
         EmailManager em1 = new EmailManager();	
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
-        Contacto persona2 = new Contacto("Candela", "joaco@gmail.com"); 
+        Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
 		
         //primer mail
         e1.setAsunto("Trabajo");
-        e1.setContenido("holaaa");
+        e1.setContenido("Quiero consultar mis horarios");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
@@ -35,7 +35,7 @@ void filtro_por_asunto_simple(){
 
 		//segundo mail
 		e2.setAsunto("Universidad");
-		e2.setContenido("holaaa");
+		e2.setContenido("Subir las notas porfavor es importante");
 		e2.setRemitente(persona1);
 		e2.agregarDestinatario(persona2);
 
@@ -43,7 +43,7 @@ void filtro_por_asunto_simple(){
 
 		//tercer mail
 		e3.setAsunto("Universidad");
-       	e3.setContenido("holaaa");
+       	e3.setContenido("Aviso de inasistencia a la proxima clase");
        	e3.setRemitente(persona1);
        	e3.agregarDestinatario(persona2);
 
@@ -51,7 +51,7 @@ void filtro_por_asunto_simple(){
 	   
 		//cuarto email
 		e4.setAsunto("Universidad");
-		e4.setContenido("holaaa");
+		e4.setContenido("Quiero consultar mis notas del exámen");
 		e4.setRemitente(persona1);
 		e4.agregarDestinatario(persona2);
 
@@ -84,7 +84,7 @@ void filtro_por_asunto_simple(){
         
 		//primer mail de persona 1 a persona 2
         e1.setAsunto("Trabajo");
-        e1.setContenido("holaaa");
+        e1.setContenido("Quiero consultar mis horarios");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
@@ -92,7 +92,7 @@ void filtro_por_asunto_simple(){
 
 		//primer mail persona 3 a persona 2
 		e2.setAsunto("Universidad");
-		e2.setContenido("holaaa");
+		e2.setContenido("Quiero consultar mis notas del exámen");
 		e2.setRemitente(persona3);
 		e2.agregarDestinatario(persona2);
 
@@ -101,7 +101,7 @@ void filtro_por_asunto_simple(){
 		//tercer mail
 		//persona 4 a persona 2
 		e3.setAsunto("Universidad");
-       	e3.setContenido("holaaa");
+       	e3.setContenido("Aviso de inasistencia a la proxima clase");
        	e3.setRemitente(persona4);
        	e3.agregarDestinatario(persona2);
 
@@ -110,7 +110,7 @@ void filtro_por_asunto_simple(){
 		//cuarto email
 		//persona 4 a persona 2
 		e4.setAsunto("Universidad");
-		e4.setContenido("holaaa");
+		e4.setContenido("Revisen el Trabajo");
 		e4.setRemitente(persona4);
 		e4.agregarDestinatario(persona2);
 
@@ -140,7 +140,7 @@ void filtro_por_asunto_simple(){
         
 		//primer mail de persona 1 a persona 2
         e1.setAsunto("Trabajo");
-        e1.setContenido("holaaa");
+        e1.setContenido("Subir las notas porfavor es importante");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
@@ -179,7 +179,7 @@ void filtro_por_asunto_simple(){
         
 		//primer mail de cuenca (persona1) a yo(persona2)
         e1.setAsunto("Trabajo");
-        e1.setContenido("holaaa");
+        e1.setContenido("Por donde se entrga el trabajo nro 2?");
         e1.setRemitente(persona1);
         e1.agregarDestinatario(persona2);
 
@@ -275,7 +275,7 @@ void filtro_por_asunto_simple(){
     }
 
     @Test
-    void filtro_compuesto_bandeja_enviados(){
+    void filtro_por_destinatario_y_por_asunto(){
         Email e1 = new Email();
         Email e2 = new Email();
         Bandeja b1 = new Bandeja();

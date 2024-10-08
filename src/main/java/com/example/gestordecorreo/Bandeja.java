@@ -53,10 +53,6 @@ public Predicate<Email> filtroPorDominio(String email){
     return filtro; 
 }
 
- 
-
-
-
 
 }
  
