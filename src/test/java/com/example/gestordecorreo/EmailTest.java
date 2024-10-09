@@ -104,6 +104,10 @@ public class EmailTest {
         Contacto persona1 = new Contacto("Joaquin Flores", "joaco@gmail.com");
         Contacto persona2 = new Contacto("Candela Cano", "candelaria@gmail.com"); 
 
+        //Prueba de que el email es valido
+        assertTrue(persona1.validarEmail(persona1.getEmail()));
+        assertTrue(persona2.validarEmail(persona2.getEmail()));
+
         e1.setAsunto("Universidad");
         e1.setContenido("Pueden cambiar la fecha del examen?");
         e1.setRemitente(persona1);
@@ -117,7 +121,7 @@ public class EmailTest {
         //se comprueba que el email no se borra de la bandeja de entrada del destinatario  
         em1.borrarEmail(persona1.bandeja.getBandejaEnviados(), e1);
         assertTrue(persona1.bandeja.getBandejaEnviados().isEmpty());
-        assertFalse(persona2.bandeja.getBandejaEntrada().isEmpty());
+        assertTrue(persona2.bandeja.getBandejaEntrada().size() == 1);
 
         //prueba
         //se borra el email de la bandeja de entrada
@@ -126,9 +130,7 @@ public class EmailTest {
         assertTrue(persona1.bandeja.getBandejaEnviados().isEmpty());
         assertTrue(persona2.bandeja.getBandejaEntrada().isEmpty());
 
-        //Prueba de que el email es valido
-        assertTrue(persona1.validarEmail(persona1.getEmail()));
-        assertTrue(persona2.validarEmail(persona2.getEmail()));
+        
         
     }
 

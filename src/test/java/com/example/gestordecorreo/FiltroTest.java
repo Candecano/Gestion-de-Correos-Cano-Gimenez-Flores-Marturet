@@ -354,8 +354,16 @@ void filtro_por_asunto_simple(){
         ArrayList<Email> correosFiltrados = b1.filtros(persona1.bandeja.getBandejaEnviados(), predicadoFinal);
 
         assertEquals(1, correosFiltrados.size());
-        //assertTrue(correosFiltrados.contains(e1));
-        //assertFalse(correosFiltrados.contains(e2));
+
+        // Obtén el correo filtrado
+        Email correoFiltrado = correosFiltrados.get(0);
+
+        // Verifica que los atributos de `correoFiltrado` coincidan con los de `e1`
+        assertEquals(e1.getAsunto(), correoFiltrado.getAsunto());
+        assertEquals(e1.getContenido(), correoFiltrado.getContenido());
+        assertEquals(e1.getRemitente(), correoFiltrado.getRemitente());
+        assertEquals(e1.getDestinatarios(), correoFiltrado.getDestinatarios());
+
     }
 
    

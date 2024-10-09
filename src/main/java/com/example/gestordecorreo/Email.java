@@ -6,7 +6,6 @@ public class Email  {
     private String contenido;
     private Contacto remitente;
     private ArrayList<Contacto> destinatarios;
-
     
     //elemento del email
     public Email(){
