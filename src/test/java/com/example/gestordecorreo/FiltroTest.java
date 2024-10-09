@@ -357,6 +357,16 @@ void filtro_por_asunto_simple(){
         //assertTrue(correosFiltrados.contains(e1));
         //assertFalse(correosFiltrados.contains(e2));
     }
+
+   
+
+
+
+
+
+
+
+
  
 
 }
